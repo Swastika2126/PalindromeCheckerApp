@@ -10,19 +10,20 @@ public class PalindromeCheckerApp {
         System.out.println("     WELCOME TO PALINDROME APP   ");
         System.out.println("=================================");
 
-        System.out.print("Enter a word: ");
-        String word = scanner.nextLine();
+        System.out.print("Enter a word or sentence: ");
+        String input = scanner.nextLine();
 
-        String reversed = "";
+        // Remove spaces and special characters
+        String cleaned = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
 
-        for (int i = word.length() - 1; i >= 0; i--) {
-            reversed += word.charAt(i);
-        }
+        // Reverse the string
+        String reversed = new StringBuilder(cleaned).reverse().toString();
 
-        if (word.equalsIgnoreCase(reversed)) {
-            System.out.println(word + " is a Palindrome ✅");
+        // Check palindrome
+        if (cleaned.equals(reversed)) {
+            System.out.println("It is a Palindrome ✅");
         } else {
-            System.out.println(word + " is NOT a Palindrome ❌");
+            System.out.println("It is NOT a Palindrome ❌");
         }
 
         scanner.close();
